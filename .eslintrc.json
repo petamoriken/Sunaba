@@ -8,14 +8,15 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:eslint-plugin-tsdoc"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": ["import", "@typescript-eslint"],
+  "plugins": ["import", "@typescript-eslint", "eslint-plugin-tsdoc"],
   "rules": {
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
@@ -50,6 +51,7 @@
         "order": "asc"
       }
     }],
+    "tsdoc/syntax": "error",
     "@typescript-eslint/consistent-type-imports": ["error", {
       "prefer": "type-imports"
     }],

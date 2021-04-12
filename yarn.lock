@@ -38,6 +38,21 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@microsoft/tsdoc-config@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc-config/-/tsdoc-config-0.14.0.tgz#fbad7dd69edabc3623a5ee3b99c9b832aa78c5c2"
+  integrity sha512-KSj15FwyaxMCGJkC320rvNXxuJNCOVO02pNqIEdf5cbLakvHK8afoHTmcjdBEWl0cfBFZlMu/1DhL4VCzZq0rQ==
+  dependencies:
+    "@microsoft/tsdoc" "0.13.0"
+    ajv "~6.12.6"
+    jju "~1.4.0"
+    resolve "~1.19.0"
+
+"@microsoft/tsdoc@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.13.0.tgz#f05c6315bc3dfd18cdca70f28cd40d28da643249"
+  integrity sha512-/8J+4DdvexBH1Qh1yR8VZ6bPay2DL/TDdmSIypAa3dAghJzsdaiZG8COvzpYIML6HV2UVN0g4qbuqzjG4YKgWg==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -149,7 +164,7 @@ acorn@^7.4.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-ajv@^6.10.0, ajv@^6.12.4:
+ajv@^6.10.0, ajv@^6.12.4, ajv@~6.12.6:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -460,6 +475,14 @@ eslint-plugin-import@^2.22.1:
     read-pkg-up "^2.0.0"
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
+
+eslint-plugin-tsdoc@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-tsdoc/-/eslint-plugin-tsdoc-0.2.11.tgz#dda92e69d88fd7f9f0a604438dca837a3341aaee"
+  integrity sha512-vEjGANpmBfrvpKj9rwePGhA+gIe1mp+dhDZsrkxlHqPVOZvzVdFSV9fxu/o3eppmxhybI8brD88jOrLEAIB9Gw==
+  dependencies:
+    "@microsoft/tsdoc" "0.13.0"
+    "@microsoft/tsdoc-config" "0.14.0"
 
 eslint-scope@^5.0.0, eslint-scope@^5.1.1:
   version "5.1.1"
@@ -804,7 +827,7 @@ is-callable@^1.1.4, is-callable@^1.2.3:
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.3.tgz#8b1e0500b73a1d76c70487636f368e519de8db8e"
   integrity sha512-J1DcMe8UYTBSrKezuIUTUwjXsho29693unXM2YhJUTR2txK/eG47bvNa/wipPFmZFgr/N6f1GA66dv0mEyTIyQ==
 
-is-core-module@^2.2.0:
+is-core-module@^2.1.0, is-core-module@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.2.0.tgz#97037ef3d52224d85163f5597b2b63d9afed981a"
   integrity sha512-XRAfAdyyY5F5cOXn7hYQDqh2Xmii+DEfIcQGxK/uNwMHhIkPWO0g8msXcbzLe+MpGoR951MlqM/2iIlU4vKDdQ==
@@ -877,6 +900,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+
+jju@~1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/jju/-/jju-1.4.0.tgz#a3abe2718af241a2b2904f84a625970f389ae32a"
+  integrity sha1-o6vicYryQaKykE+EpiWXDzia4yo=
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -1205,6 +1233,14 @@ resolve@^1.10.0, resolve@^1.13.1, resolve@^1.17.0:
   integrity sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==
   dependencies:
     is-core-module "^2.2.0"
+    path-parse "^1.0.6"
+
+resolve@~1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.19.0.tgz#1af5bf630409734a067cae29318aac7fa29a267c"
+  integrity sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==
+  dependencies:
+    is-core-module "^2.1.0"
     path-parse "^1.0.6"
 
 reusify@^1.0.4:

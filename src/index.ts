@@ -4,7 +4,7 @@ import { parseToTokens } from "./parser/token";
 
 export { ParseError } from "./parser/error";
 
-/** @throws {ParseError} */
+/** @throws {@link ParseError} */
 export function parse(source: string): Program {
   const lineTokens = parseToTokens(source);
   return parseToSyntaxTree(lineTokens);
