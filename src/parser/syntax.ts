@@ -3,7 +3,7 @@ import type { LineToken, Operator, Token } from "./token";
 
 export interface Program {
   type: "Program";
-  body: Statement[];
+  body: RootStatement[];
 }
 
 interface AssignmentStatement {
@@ -12,10 +12,9 @@ interface AssignmentStatement {
   right: Expression;
 }
 
-interface ConstantStatement {
-  type: "ConstantStatement";
-  left: Identifier;
-  right: Expression;
+interface ExpressionStatement {
+  type: "ExpressionStatement";
+  expression: CallExpression;
 }
 
 interface IfStatement {
@@ -30,6 +29,12 @@ interface WhileStatement {
   body: Statement[];
 }
 
+interface ConstantStatement {
+  type: "ConstantStatement";
+  left: Identifier;
+  right: Expression;
+}
+
 interface FunctionDeclaration {
   type: "FunctionDeclaration";
   id: Identifier;
@@ -37,11 +42,17 @@ interface FunctionDeclaration {
   body: Statement[];
 }
 
+type RootStatement = | AssignmentStatement
+                     | ExpressionStatement
+                     | IfStatement
+                     | WhileStatement
+                     | ConstantStatement
+                     | FunctionDeclaration;
+
 type Statement = | AssignmentStatement
-                 | ConstantStatement
+                 | ExpressionStatement
                  | IfStatement
-                 | WhileStatement
-                 | FunctionDeclaration;
+                 | WhileStatement;
 
 interface UnaryExpression {
   type: "UnaryExpression";
@@ -388,18 +399,26 @@ function parseExpression(column: number, tokens: (Token & { row: number })[], st
 }
 
 export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
-  const body: AssignmentStatement[] = [];
+  const body: RootStatement[] = [];
 
-  const statements: Statement[][] = [body];
+  /** statement indent stack */
+  const statements: [RootStatement[], ...Statement[][]] = [body];
+
+  /** min value allowed for indent on next line */
   let minIndent: number | null = null;
+  /** max value allowed for indent on next line */
   let maxIndent: number | null = null;
+
   for (const { column, indent, tokens } of lineTokens) {
+    // check indent
     if ((minIndent !== null && minIndent > indent) || (maxIndent !== null && maxIndent < indent)) {
       throw new ParseError(`${column}: Invalid indent space`);
     } else {
       minIndent = null;
       maxIndent = null;
     }
+
+    // pop statements from indent stack
     statements.length = indent + 1;
 
     const token = tokens[0];
@@ -416,33 +435,44 @@ export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
 
       case "IdentifierToken":
       case "MemoryToken": {
-        const index = tokens.findIndex(({ type }) => {return type === "AssignmentToken";});
-        if (index === -1) {
-          throw new ParseError(`${column}: There is no assignment operator`);
-        }
-
-        const leftTokens = tokens.slice(0, index);
-        if (leftTokens.length === 0) {
-          throw new ParseError(`${column} ${tokens[index].row}: The left side of the assignment operator is empty`);
-        }
-
-        const left = parseExpression(column, leftTokens);
-        if (left.type !== "MemberExpression" && left.type !== "Identifier") {
-          throw new ParseError(`${column} ${leftTokens[0].row}: The left side of the assignment operator is not assignable`);
-        }
-
-        const rightTokens = tokens.slice(index + 1);
-        if (rightTokens.length === 0) {
-          throw new ParseError(`${column} ${tokens[index].row}: The right side of the assignment operator is empty`);
-        }
-
-        const right = parseExpression(column, rightTokens);
-
-        statements[statements.length - 1].push({
-          type: "AssignmentStatement",
-          left,
-          right,
+        const index = tokens.findIndex(({ type }) => {
+          return type === "AssignmentToken";
         });
+
+        if (index !== -1) {
+          const leftTokens = tokens.slice(0, index);
+          if (leftTokens.length === 0) {
+            throw new ParseError(`${column} ${tokens[index].row}: The left side of the assignment operator is empty`);
+          }
+
+          const left = parseExpression(column, leftTokens);
+          if (left.type !== "MemberExpression" && left.type !== "Identifier") {
+            throw new ParseError(`${column} ${leftTokens[0].row}: The left side of the assignment operator is not assignable`);
+          }
+
+          const rightTokens = tokens.slice(index + 1);
+          if (rightTokens.length === 0) {
+            throw new ParseError(`${column} ${tokens[index].row}: The right side of the assignment operator is empty`);
+          }
+
+          const right = parseExpression(column, rightTokens);
+
+          statements[statements.length - 1].push({
+            type: "AssignmentStatement",
+            left,
+            right,
+          });
+        } else {
+          const expression = parseExpression(column, tokens);
+          if (expression.type !== "CallExpression") {
+            throw new ParseError(`${column}: This expression has no effect`);
+          }
+
+          statements[statements.length - 1].push({
+            type: "ExpressionStatement",
+            expression
+          });
+        }
 
         maxIndent = indent;
         break;
@@ -485,6 +515,39 @@ export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
 
         statements.push(body);
         minIndent = indent + 1;
+        break;
+      }
+
+      case "ConstToken": {
+        if (indent !== 0) {
+          throw new ParseError(`${column} ${token.row}: \`const\` keyword must be in the root scope (no indent)`);
+        }
+
+        const identifierToken = tokens[1];
+        if (identifierToken?.type !== "IdentifierToken") {
+          throw new ParseError(`${column} ${identifierToken.row}: \`const\` keyword must be followed by an identifier`);
+        }
+        const identifier = parseExpression(column, [identifierToken]) as Identifier;
+
+        const assignmentToken = tokens[2];
+        if (assignmentToken.type !== "AssignmentToken") {
+          throw new ParseError(`${column} ${assignmentToken.row}: Invalid \`const\` statement`);
+        }
+
+        const rightTokens = tokens.slice(3);
+        if (rightTokens.length === 0) {
+          throw new ParseError(`${column} ${assignmentToken.row}: The right side of the assignment operator is empty`);
+        }
+
+        const right = parseExpression(column, rightTokens);
+
+        statements[0].push({
+          type: "ConstantStatement",
+          left: identifier,
+          right,
+        });
+
+        maxIndent = indent;
         break;
       }
 
@@ -542,7 +605,7 @@ export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
         }
 
         const body: Statement[] = [];
-        statements[statements.length - 1].push({
+        statements[0].push({
           type: "FunctionDeclaration",
           id: identifier,
           params: params as Identifier[],
@@ -551,39 +614,6 @@ export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
 
         statements.push(body);
         minIndent = indent + 1;
-        break;
-      }
-
-      case "ConstToken": {
-        if (indent !== 0) {
-          throw new ParseError(`${column} ${token.row}: \`const\` keyword must be in the root scope (no indent)`);
-        }
-
-        const identifierToken = tokens[1];
-        if (identifierToken?.type !== "IdentifierToken") {
-          throw new ParseError(`${column} ${identifierToken.row}: \`const\` keyword must be followed by an identifier`);
-        }
-        const identifier = parseExpression(column, [identifierToken]) as Identifier;
-
-        const assignmentToken = tokens[2];
-        if (assignmentToken.type !== "AssignmentToken") {
-          throw new ParseError(`${column} ${assignmentToken.row}: Invalid \`const\` statement`);
-        }
-
-        const rightTokens = tokens.slice(3);
-        if (rightTokens.length === 0) {
-          throw new ParseError(`${column} ${assignmentToken.row}: The right side of the assignment operator is empty`);
-        }
-
-        const right = parseExpression(column, rightTokens);
-
-        statements[statements.length - 1].push({
-          type: "ConstantStatement",
-          left: identifier,
-          right,
-        });
-
-        maxIndent = indent;
         break;
       }
 
