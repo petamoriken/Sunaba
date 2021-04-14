@@ -1,0 +1,89 @@
+[
+  {
+    "column": 1,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "ConstToken",
+        "row": 1
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "screen",
+        "row": 7
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 14
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "60000",
+        "row": 17
+      }
+    ]
+  },
+  {
+    "column": 2,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "x",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "5",
+        "row": 6
+      }
+    ]
+  },
+  {
+    "column": 3,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "screen",
+        "row": 1
+      },
+      {
+        "type": "BracketStartToken",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "5050",
+        "row": 8
+      },
+      {
+        "type": "OperatorToken",
+        "value": "+",
+        "row": 13
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "x",
+        "row": 15
+      },
+      {
+        "type": "BracketEndToken",
+        "row": 16
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 18
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "999999",
+        "row": 21
+      }
+    ]
+  }
+]

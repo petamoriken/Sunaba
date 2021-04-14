@@ -1,0 +1,23 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "MemberExpression",
+        "target": {
+          "type": "Identifier",
+          "name": "memory"
+        },
+        "property": {
+          "type": "NumericLiteral",
+          "value": 65050
+        }
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 990000
+      }
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+[
+  {
+    "column": 1,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "n",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "fact",
+        "row": 6
+      },
+      {
+        "type": "ParentheseStartToken",
+        "row": 10
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "6",
+        "row": 11
+      },
+      {
+        "type": "ParentheseEndToken",
+        "row": 12
+      }
+    ]
+  },
+  {
+    "column": 2,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "0",
+        "row": 6
+      }
+    ]
+  },
+  {
+    "column": 3,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "WhileToken",
+        "row": 1
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 7
+      },
+      {
+        "type": "OperatorToken",
+        "value": "<",
+        "row": 9
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "n",
+        "row": 11
+      }
+    ]
+  },
+  {
+    "column": 4,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "MemoryToken",
+        "row": 1
+      },
+      {
+        "type": "BracketStartToken",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "60000",
+        "row": 8
+      },
+      {
+        "type": "OperatorToken",
+        "value": "+",
+        "row": 14
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 16
+      },
+      {
+        "type": "BracketEndToken",
+        "row": 17
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 19
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "990000",
+        "row": 22
+      }
+    ]
+  },
+  {
+    "column": 5,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 6
+      },
+      {
+        "type": "OperatorToken",
+        "value": "+",
+        "row": 8
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "1",
+        "row": 10
+      }
+    ]
+  },
+  {
+    "column": 7,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "DefToken",
+        "row": 1
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "fact",
+        "row": 5
+      },
+      {
+        "type": "ParentheseStartToken",
+        "row": 9
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "a",
+        "row": 10
+      },
+      {
+        "type": "ParentheseEndToken",
+        "row": 11
+      }
+    ]
+  },
+  {
+    "column": 8,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "out",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 5
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "1",
+        "row": 8
+      }
+    ]
+  },
+  {
+    "column": 9,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "IfToken",
+        "row": 1
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "a",
+        "row": 4
+      },
+      {
+        "type": "OperatorToken",
+        "value": ">",
+        "row": 6
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "1",
+        "row": 8
+      }
+    ]
+  },
+  {
+    "column": 10,
+    "indent": 2,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "out",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 5
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "a",
+        "row": 8
+      },
+      {
+        "type": "OperatorToken",
+        "value": "*",
+        "row": 10
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "fact",
+        "row": 12
+      },
+      {
+        "type": "ParentheseStartToken",
+        "row": 16
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "a",
+        "row": 17
+      },
+      {
+        "type": "OperatorToken",
+        "value": "-",
+        "row": 19
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "1",
+        "row": 21
+      },
+      {
+        "type": "ParentheseEndToken",
+        "row": 22
+      }
+    ]
+  }
+]

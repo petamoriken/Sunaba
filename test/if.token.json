@@ -1,0 +1,116 @@
+[
+  {
+    "column": 1,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IfToken",
+        "row": 1
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "5",
+        "row": 4
+      },
+      {
+        "type": "OperatorToken",
+        "value": "<",
+        "row": 6
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "10",
+        "row": 8
+      }
+    ]
+  },
+  {
+    "column": 2,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "MemoryToken",
+        "row": 1
+      },
+      {
+        "type": "BracketStartToken",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "65050",
+        "row": 8
+      },
+      {
+        "type": "BracketEndToken",
+        "row": 13
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 15
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "990000",
+        "row": 18
+      }
+    ]
+  },
+  {
+    "column": 3,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IfToken",
+        "row": 1
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "10",
+        "row": 4
+      },
+      {
+        "type": "OperatorToken",
+        "value": "<",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "5",
+        "row": 9
+      }
+    ]
+  },
+  {
+    "column": 4,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "MemoryToken",
+        "row": 1
+      },
+      {
+        "type": "BracketStartToken",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "65051",
+        "row": 8
+      },
+      {
+        "type": "BracketEndToken",
+        "row": 13
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 15
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "9900",
+        "row": 18
+      }
+    ]
+  }
+]

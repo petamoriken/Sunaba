@@ -1,0 +1,200 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "do"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "a"
+        },
+        {
+          "type": "Identifier",
+          "name": "b"
+        },
+        {
+          "type": "Identifier",
+          "name": "c"
+        },
+        {
+          "type": "Identifier",
+          "name": "d"
+        }
+      ],
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "out"
+          },
+          "right": {
+            "type": "BinaryExpression",
+            "operator": "+",
+            "left": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "Identifier",
+                "name": "a"
+              },
+              "right": {
+                "type": "BinaryExpression",
+                "operator": "+",
+                "left": {
+                  "type": "Identifier",
+                  "name": "b"
+                },
+                "right": {
+                  "type": "Identifier",
+                  "name": "c"
+                }
+              }
+            },
+            "right": {
+              "type": "Identifier",
+              "name": "d"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "a"
+      },
+      "right": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "do"
+        },
+        "arguments": [
+          {
+            "type": "NumericLiteral",
+            "value": 1
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 2
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 3
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "do"
+        },
+        "arguments": [
+          {
+            "type": "NumericLiteral",
+            "value": 1
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 2
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 3
+          },
+          {
+            "type": "NumericLiteral",
+            "value": 4
+          }
+        ]
+      }
+    },
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "i"
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 0
+      }
+    },
+    {
+      "type": "WhileStatement",
+      "test": {
+        "type": "BinaryExpression",
+        "operator": "<",
+        "left": {
+          "type": "Identifier",
+          "name": "i"
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "a"
+        }
+      },
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "MemberExpression",
+            "target": {
+              "type": "Identifier",
+              "name": "memory"
+            },
+            "property": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "NumericLiteral",
+                "value": 60000
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "i"
+              }
+            }
+          },
+          "right": {
+            "type": "NumericLiteral",
+            "value": 990000
+          }
+        },
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "i"
+          },
+          "right": {
+            "type": "BinaryExpression",
+            "operator": "+",
+            "left": {
+              "type": "Identifier",
+              "name": "i"
+            },
+            "right": {
+              "type": "NumericLiteral",
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

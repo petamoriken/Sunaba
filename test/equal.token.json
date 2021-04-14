@@ -1,0 +1,137 @@
+[
+  {
+    "column": 1,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "0",
+        "row": 6
+      }
+    ]
+  },
+  {
+    "column": 2,
+    "indent": 0,
+    "tokens": [
+      {
+        "type": "WhileToken",
+        "row": 1
+      },
+      {
+        "type": "ParentheseStartToken",
+        "row": 7
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 8
+      },
+      {
+        "type": "OperatorToken",
+        "value": "=",
+        "row": 10
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "10",
+        "row": 12
+      },
+      {
+        "type": "ParentheseEndToken",
+        "row": 14
+      },
+      {
+        "type": "OperatorToken",
+        "value": "=",
+        "row": 16
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "0",
+        "row": 18
+      }
+    ]
+  },
+  {
+    "column": 3,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "MemoryToken",
+        "row": 1
+      },
+      {
+        "type": "BracketStartToken",
+        "row": 7
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "65050",
+        "row": 8
+      },
+      {
+        "type": "OperatorToken",
+        "value": "+",
+        "row": 14
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 16
+      },
+      {
+        "type": "BracketEndToken",
+        "row": 17
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 19
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "990000",
+        "row": 22
+      }
+    ]
+  },
+  {
+    "column": 4,
+    "indent": 1,
+    "tokens": [
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 1
+      },
+      {
+        "type": "AssignmentToken",
+        "row": 3
+      },
+      {
+        "type": "IdentifierToken",
+        "value": "i",
+        "row": 6
+      },
+      {
+        "type": "OperatorToken",
+        "value": "+",
+        "row": 8
+      },
+      {
+        "type": "NumericLiteralToken",
+        "value": "1",
+        "row": 10
+      }
+    ]
+  }
+]

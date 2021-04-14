@@ -1,0 +1,108 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ConstantStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "n0"
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 200
+      }
+    },
+    {
+      "type": "ConstantStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "n1"
+      },
+      "right": {
+        "type": "BinaryExpression",
+        "operator": "+",
+        "left": {
+          "type": "Identifier",
+          "name": "n0"
+        },
+        "right": {
+          "type": "NumericLiteral",
+          "value": 100
+        }
+      }
+    },
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "i"
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 0
+      }
+    },
+    {
+      "type": "WhileStatement",
+      "test": {
+        "type": "BinaryExpression",
+        "operator": "<",
+        "left": {
+          "type": "Identifier",
+          "name": "i"
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "n1"
+        }
+      },
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "MemberExpression",
+            "target": {
+              "type": "Identifier",
+              "name": "memory"
+            },
+            "property": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "NumericLiteral",
+                "value": 60000
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "i"
+              }
+            }
+          },
+          "right": {
+            "type": "NumericLiteral",
+            "value": 990000
+          }
+        },
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "i"
+          },
+          "right": {
+            "type": "BinaryExpression",
+            "operator": "+",
+            "left": {
+              "type": "Identifier",
+              "name": "i"
+            },
+            "right": {
+              "type": "NumericLiteral",
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

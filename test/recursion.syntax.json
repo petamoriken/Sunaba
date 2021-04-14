@@ -1,0 +1,177 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "n"
+      },
+      "right": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "fact"
+        },
+        "arguments": [
+          {
+            "type": "NumericLiteral",
+            "value": 6
+          }
+        ]
+      }
+    },
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "i"
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 0
+      }
+    },
+    {
+      "type": "WhileStatement",
+      "test": {
+        "type": "BinaryExpression",
+        "operator": "<",
+        "left": {
+          "type": "Identifier",
+          "name": "i"
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "n"
+        }
+      },
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "MemberExpression",
+            "target": {
+              "type": "Identifier",
+              "name": "memory"
+            },
+            "property": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "NumericLiteral",
+                "value": 60000
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "i"
+              }
+            }
+          },
+          "right": {
+            "type": "NumericLiteral",
+            "value": 990000
+          }
+        },
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "i"
+          },
+          "right": {
+            "type": "BinaryExpression",
+            "operator": "+",
+            "left": {
+              "type": "Identifier",
+              "name": "i"
+            },
+            "right": {
+              "type": "NumericLiteral",
+              "value": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "fact"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "a"
+        }
+      ],
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "out"
+          },
+          "right": {
+            "type": "NumericLiteral",
+            "value": 1
+          }
+        },
+        {
+          "type": "IfStatement",
+          "test": {
+            "type": "BinaryExpression",
+            "operator": ">",
+            "left": {
+              "type": "Identifier",
+              "name": "a"
+            },
+            "right": {
+              "type": "NumericLiteral",
+              "value": 1
+            }
+          },
+          "body": [
+            {
+              "type": "AssignmentStatement",
+              "left": {
+                "type": "Identifier",
+                "name": "out"
+              },
+              "right": {
+                "type": "BinaryExpression",
+                "operator": "*",
+                "left": {
+                  "type": "Identifier",
+                  "name": "a"
+                },
+                "right": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "fact"
+                  },
+                  "arguments": [
+                    {
+                      "type": "BinaryExpression",
+                      "operator": "-",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "a"
+                      },
+                      "right": {
+                        "type": "NumericLiteral",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

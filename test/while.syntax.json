@@ -1,0 +1,78 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "AssignmentStatement",
+      "left": {
+        "type": "Identifier",
+        "name": "i"
+      },
+      "right": {
+        "type": "NumericLiteral",
+        "value": 0
+      }
+    },
+    {
+      "type": "WhileStatement",
+      "test": {
+        "type": "BinaryExpression",
+        "operator": "<",
+        "left": {
+          "type": "Identifier",
+          "name": "i"
+        },
+        "right": {
+          "type": "NumericLiteral",
+          "value": 10000
+        }
+      },
+      "body": [
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "MemberExpression",
+            "target": {
+              "type": "Identifier",
+              "name": "memory"
+            },
+            "property": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "NumericLiteral",
+                "value": 60000
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "i"
+              }
+            }
+          },
+          "right": {
+            "type": "NumericLiteral",
+            "value": 990000
+          }
+        },
+        {
+          "type": "AssignmentStatement",
+          "left": {
+            "type": "Identifier",
+            "name": "i"
+          },
+          "right": {
+            "type": "BinaryExpression",
+            "operator": "+",
+            "left": {
+              "type": "Identifier",
+              "name": "i"
+            },
+            "right": {
+              "type": "NumericLiteral",
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
