@@ -474,7 +474,7 @@ export function parse(lineTokens: Iterable<LineToken>): Program {
 
           statements[statements.length - 1].push({
             type: "ExpressionStatement",
-            expression
+            expression,
           });
         }
 
