@@ -14,6 +14,6 @@ describe("parse Sunaba sources to tokens", () => {
       fs.readFile(path.resolve(filedir, `${filename}.txt`), "utf-8"),
       fs.readFile(path.resolve(filedir, `${filename}.token.json`), "utf-8"),
     ]);
-    expect(tokenise(input)).toEqual(JSON.parse(expected));
+    expect([...tokenise(input)]).toEqual(JSON.parse(expected));
   })
 });

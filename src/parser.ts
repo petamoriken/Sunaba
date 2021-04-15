@@ -398,8 +398,10 @@ function parseExpression(column: number, tokens: (Token & { row: number })[], st
   }
 }
 
-export function parse(lineTokens: LineToken[]): Program {
+export function parse(lineTokens: Iterable<LineToken>): Program {
   const body: RootStatement[] = [];
+
+  let lastLineToken: LineToken | null = null;
 
   /** statement indent stack */
   const statements: [RootStatement[], ...Statement[][]] = [body];
@@ -409,7 +411,9 @@ export function parse(lineTokens: LineToken[]): Program {
   /** max value allowed for indent on next line */
   let maxIndent: number | null = null;
 
-  for (const { column, indent, tokens } of lineTokens) {
+  for (const lineToken of lineTokens) {
+    const { column, indent, tokens } = lineToken;
+
     // check indent
     if ((minIndent !== null && minIndent > indent) || (maxIndent !== null && maxIndent < indent)) {
       throw new ParseError(`${column}: Invalid indent space`);
@@ -622,10 +626,12 @@ export function parse(lineTokens: LineToken[]): Program {
         const _exhaustiveCheck: never = token;
         throw new Error(`Unexpected token type: ${(_exhaustiveCheck as Token).type}`);
     }
+
+    lastLineToken = lineToken;
   }
 
-  if (minIndent !== null) {
-    throw new ParseError(`${lineTokens[lineTokens.length - 1].column}: There is no body for the last \`if\` or \`while\` or \`def\` statement`);
+  if (minIndent !== null && lastLineToken !== null) {
+    throw new ParseError(`${lastLineToken.column}: There is no body for the last \`if\` or \`while\` or \`def\` statement`);
   }
 
   return {

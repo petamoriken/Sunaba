@@ -137,8 +137,8 @@ export interface LineToken {
   tokens: (Token & { row: number })[];
 }
 
-export function tokenise(source: string): LineToken[] {
-  const lineTokens: LineToken[] = [];
+export function* tokenise(source: string): IterableIterator<LineToken> {
+  let lastLineToken: LineToken | null = null;
   const indents: number[] = [0];
 
   let multiLineCommentCount = 0;
@@ -339,17 +339,15 @@ export function tokenise(source: string): LineToken[] {
     }
 
     if (tokens.length !== 0) {
-      lineTokens.push({
+      yield lastLineToken = {
         column: column + 1,
         indent: indents.length - 1,
         tokens,
-      });
+      };
     }
   }
 
-  if (multiLineCommentCount !== 0) {
-    throw new ParseError(`${lineTokens[lineTokens.length - 1].column}: The multi-line comment is not closed`);
+  if (multiLineCommentCount !== 0 && lastLineToken !== null) {
+    throw new ParseError(`${lastLineToken.column}: The multi-line comment is not closed`);
   }
-
-  return lineTokens;
 }
