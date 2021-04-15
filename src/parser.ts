@@ -1,5 +1,5 @@
 import { ParseError } from "./error";
-import type { LineToken, Operator, Token } from "./token";
+import type { LineToken, Operator, Token } from "./tokeniser";
 
 export interface Program {
   type: "Program";
@@ -398,7 +398,7 @@ function parseExpression(column: number, tokens: (Token & { row: number })[], st
   }
 }
 
-export function parseToSyntaxTree(lineTokens: LineToken[]): Program {
+export function parse(lineTokens: LineToken[]): Program {
   const body: RootStatement[] = [];
 
   /** statement indent stack */

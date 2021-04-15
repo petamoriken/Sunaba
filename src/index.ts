@@ -1,11 +1,11 @@
-import type { Program } from "./parser/syntax";
-import { parseToSyntaxTree } from "./parser/syntax";
-import { parseToTokens } from "./parser/token";
+import type { Program } from "./parser";
+import { parse as _parse } from "./parser";
+import { tokenise } from "./tokeniser";
 
-export { ParseError } from "./parser/error";
+export { ParseError } from "./error";
 
 /** @throws {@link ParseError} */
 export function parse(source: string): Program {
-  const lineTokens = parseToTokens(source);
-  return parseToSyntaxTree(lineTokens);
+  const lineTokens = tokenise(source);
+  return _parse(lineTokens);
 }

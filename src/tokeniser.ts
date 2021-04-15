@@ -137,7 +137,7 @@ export interface LineToken {
   tokens: (Token & { row: number })[];
 }
 
-export function parseToTokens(source: string): LineToken[] {
+export function tokenise(source: string): LineToken[] {
   const lineTokens: LineToken[] = [];
   const indents: number[] = [0];
 
