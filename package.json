@@ -22,5 +22,8 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "@thi.ng/leb128": "^1.0.55"
   }
 }
